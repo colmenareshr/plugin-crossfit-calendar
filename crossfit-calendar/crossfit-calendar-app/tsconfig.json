@@ -1,0 +1,24 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./@types"],
+    "types": ["@wordpress/element"], // Agrega esto para incluir los tipos de WordPress
+    "strict": true, // Habilita el modo estricto (opcional, pero recomendado)
+    "skipLibCheck": true // Opcional: omite la verificación de tipos en las bibliotecas
+  }
+}
