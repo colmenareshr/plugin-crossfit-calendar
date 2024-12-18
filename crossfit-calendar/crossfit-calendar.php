@@ -24,20 +24,12 @@ function crossfit_calendar_enqueue_scripts() {
     wp_enqueue_script(
         'react-calendar-app',
         plugins_url('crossfit-calendar-app/dist/assets/index-Dqj0bjcm.js', __FILE__),
-        ['wp-element'], // Esto asegura que React y ReactDOM estén disponibles
+        ['wp-element'], 
         '1.1.0',
         true
     );
 
-    // Estilos opcionales (habilitar si usas CSS desde React)
-    // wp_enqueue_style(
-    //     'react-calendar-style',
-    //     plugins_url('crossfit-calendar-app/dist/assets/index-DVH67hMT.css', __FILE__),
-    //     array(),
-    //     '1.0.0'
-    // );
-
-    // Pasar la configuración de WhatsApp y horarios a JavaScript
+    
     wp_localize_script('react-calendar-app', 'crossfitCalendarConfig', array(
         'whatsappNumber' => get_option('crossfit_calendar_whatsapp_number', ''),
         'schedules' => get_option('crossfit_calendar_schedules', []) // Horarios predefinidos
@@ -45,7 +37,7 @@ function crossfit_calendar_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'crossfit_calendar_enqueue_scripts');
 
-// Crear menú para configuración
+
 function crossfit_calendar_settings_menu() {
     add_options_page(
         'Configuración del Calendario CrossFit',
@@ -57,7 +49,7 @@ function crossfit_calendar_settings_menu() {
 }
 add_action('admin_menu', 'crossfit_calendar_settings_menu');
 
-// Página de configuración del plugin
+
 function crossfit_calendar_settings_page() {
     ?>
     <div class="wrap">
@@ -73,7 +65,6 @@ function crossfit_calendar_settings_page() {
     <?php
 }
 
-// Registrar campos de configuración
 function crossfit_calendar_register_settings() {
     // Número de WhatsApp
     register_setting('crossfit_calendar_settings', 'crossfit_calendar_whatsapp_number');
